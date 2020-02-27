@@ -1,0 +1,11 @@
+C:\revature\day2exercises\day2exercise1\obj\Debug\netcoreapp3.1\day2exercise1.csprojAssemblyReference.cache
+C:\revature\day2exercises\day2exercise1\obj\Debug\netcoreapp3.1\day2exercise1.AssemblyInfoInputs.cache
+C:\revature\day2exercises\day2exercise1\obj\Debug\netcoreapp3.1\day2exercise1.AssemblyInfo.cs
+C:\revature\day2exercises\day2exercise1\bin\Debug\netcoreapp3.1\day2exercise1.exe
+C:\revature\day2exercises\day2exercise1\bin\Debug\netcoreapp3.1\day2exercise1.deps.json
+C:\revature\day2exercises\day2exercise1\bin\Debug\netcoreapp3.1\day2exercise1.runtimeconfig.json
+C:\revature\day2exercises\day2exercise1\bin\Debug\netcoreapp3.1\day2exercise1.runtimeconfig.dev.json
+C:\revature\day2exercises\day2exercise1\bin\Debug\netcoreapp3.1\day2exercise1.dll
+C:\revature\day2exercises\day2exercise1\bin\Debug\netcoreapp3.1\day2exercise1.pdb
+C:\revature\day2exercises\day2exercise1\obj\Debug\netcoreapp3.1\day2exercise1.dll
+C:\revature\day2exercises\day2exercise1\obj\Debug\netcoreapp3.1\day2exercise1.pdb
