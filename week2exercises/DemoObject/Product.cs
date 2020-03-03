@@ -15,9 +15,16 @@ namespace DemoObject
             StarRating = 5;
         }
 
+        public void SetValues(string id, int quantity, double rating)
+        {
+            ProductID = id;
+            Stock = quantity;
+            StarRating = rating;
+        }
+
         public override string ToString()
         {
-            return "Product " + ProductID + ", " + Stock + " left in stock, with a " + StarRating + " star rating.";
+            return "Product - " + ProductID + ", Stock - " + Stock + " Star Rating - " + StarRating;
         }
     }
 }

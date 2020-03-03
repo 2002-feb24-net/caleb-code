@@ -11,6 +11,18 @@ namespace DemoObject
             Product candyBar = new Product();
             candyBar.SetDefaultValues();
             Console.WriteLine(candyBar);
+            
+            int cerealAmount = GetStock("cereal");
+
+            Product cereal = new Product();
+            cereal.SetValues("Cocoa Pebbles", cerealAmount, 4.4);
+            Console.WriteLine(cereal);
+        }
+
+        static int GetStock(string name)
+        {
+            Console.WriteLine("Please enter the stock for " + name + ": ");
+            return int.Parse(Console.ReadLine());
         }
     }
 }
