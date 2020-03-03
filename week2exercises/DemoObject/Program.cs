@@ -11,7 +11,7 @@ namespace DemoObject
             Product candyBar = new Product();
             candyBar.SetDefaultValues();
             Console.WriteLine(candyBar);
-            
+
             int cerealAmount = GetStock("cereal");
 
             Product cereal = new Product();
@@ -21,8 +21,14 @@ namespace DemoObject
 
         static int GetStock(string name)
         {
-            Console.WriteLine("Please enter the stock for " + name + ": ");
-            return int.Parse(Console.ReadLine());
+            int quantity;
+            do
+            {
+                Console.WriteLine("Please enter the stock for " + name + ": ");
+                quantity = int.Parse(Console.ReadLine());
+            }
+            while(quantity < 0);
+            return quantity;
         }
     }
 }
