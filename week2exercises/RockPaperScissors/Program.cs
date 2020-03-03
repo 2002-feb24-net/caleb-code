@@ -18,7 +18,7 @@ namespace RockPaperScissors
             }
             while(input == "y" || input != "n" || input != "no");
             //method should print out a summary of the rounds - w/l
-            game.RoundsSummary();
+            game.PrintSummary(winLoss);
         }
     }
 }
