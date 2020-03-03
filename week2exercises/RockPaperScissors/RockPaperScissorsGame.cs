@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace RockPaperScissors
 {
@@ -9,6 +10,7 @@ namespace RockPaperScissors
             int losses = 0;
             int ties = 0;
             int count = 0;
+            List<string> resultStringList = new List<string>();
         public void PlayRound()
         {
             Console.WriteLine("Enter a hand (rock, paper, scissors): ");
@@ -26,6 +28,7 @@ namespace RockPaperScissors
                     Console.WriteLine("It is a tie. ");
                     ties++;
                     count++;
+                    resultStringList.Add("Tie");
                 }
                 else if (inputHand == "paper")
                 {
@@ -33,6 +36,7 @@ namespace RockPaperScissors
                     Console.WriteLine("You win, paper beats rock. ");
                     wins++;
                     count++;
+                    resultStringList.Add("Win");
                 }
                 else if (inputHand == "scissors")
                 {
@@ -40,6 +44,7 @@ namespace RockPaperScissors
                     Console.WriteLine("You lose, rock beats scissors. ");
                     losses++;
                     count++;
+                    resultStringList.Add("Loss");
                 }
                 else
                 {
@@ -56,6 +61,7 @@ namespace RockPaperScissors
                     Console.WriteLine("You lose, paper beats rock.");
                     losses++;
                     count++;
+                    resultStringList.Add("Loss");
                 }
                 else if (inputHand == "paper")
                 {
@@ -63,13 +69,15 @@ namespace RockPaperScissors
                     Console.WriteLine("It is a tie. ");
                     ties++;
                     count++;
+                    resultStringList.Add("Tie");
                 }
                 else if (inputHand == "scissors")
                 {
                     Console.WriteLine("The computer chose paper.");
                     Console.WriteLine("You win, scissors beats paper. ");
-                    wins++;    
-                    count++;             
+                    wins++;
+                    count++;
+                    resultStringList.Add("Win");   
                 }
                 else
                 {
@@ -84,6 +92,7 @@ namespace RockPaperScissors
                     Console.WriteLine("You win, rock beats scissors.");
                     wins++;
                     count++;
+                    resultStringList.Add("Win");
                 }
                 else if (inputHand == "paper")
                 {
@@ -91,6 +100,7 @@ namespace RockPaperScissors
                     Console.WriteLine("You lose, scissors beats paper.");
                     losses++;
                     count++;
+                    resultStringList.Add("Loss");
                 }
                 else if (inputHand == "scissors")
                 {
@@ -98,6 +108,7 @@ namespace RockPaperScissors
                     Console.WriteLine("It is a tie.");
                     ties++;
                     count++;
+                    resultStringList.Add("Tie");
                 }
                 else
                 {
@@ -112,8 +123,26 @@ namespace RockPaperScissors
 
         public void PrintSummary()
         {
-            Console.WriteLine("Summary: \nYou won " + wins + " games, lost " + losses + 
+            string resultString = "";
+            foreach(string str in resultStringList)
+            {
+                resultString += str + " ";
+            }
+            Console.WriteLine(resultString);
+            Console.WriteLine("You won " + wins + " games, lost " + losses + 
             " games, and tied " + ties + " games, out of a total " + count + " games played.");
+            if (wins > losses)
+            {
+                Console.WriteLine("You've won more than you lost, congrats!");
+            }
+            else if (losses > wins)
+            {
+                Console.WriteLine("You've lost more than you won, bummer!");
+            }
+            else
+            {
+                Console.WriteLine("On average, you and the computer tied!");
+            }
         }
     }
 }
