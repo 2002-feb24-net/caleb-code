@@ -1,14 +1,25 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace RockPaperScissors
+namespace RPS.Library
 {
-    class RockPaperScissorsGame
+    public class RockPaperScissorsGame
     {
         // fields
         // int wins = 0;
         // int losses = 0;
         // int ties = 0;
+
+        IInputterOutputter _io;
+        IRPSStrategy _cs;
+
+        //constructor
+        public RockPaperScissorsGame(IInputterOutputter io, IRPSStrategy cs)
+        {
+            _io = io;
+            _cs = cs;
+        }//we're using a principle called dependency inversion here
 
         List<string> roundResults = new List<string>();
 
@@ -17,15 +28,13 @@ namespace RockPaperScissors
         {
             int roundNumber = roundResults.Count + 1;
 
-            Console.Write("Round " + roundNumber + ". Enter R, P, or S: ");
-            string input = Console.ReadLine();
+            _io.Output("Round " + roundNumber + ". Enter R, P, or S: ");
+            string input = _io.Input();
 
-            var computersMove = DecideMove();
+            //setting the counterstrategy as the computer's next move **********System.ArgumentOutOfRangeException (index out of range)
+            string computersMove = _cs.CounterStrategy(roundResults, input);
 
-            // some people put var literally everywhere
-
-
-            Console.WriteLine("Computer chose " + computersMove);
+            _io.Output("Computer chose " + computersMove);
 
             // e.g... a bunch of nested if-else
             // compare input and computersMove
@@ -33,7 +42,7 @@ namespace RockPaperScissors
             {
                 // if the moves are the same, it's a tie
                 roundResults.Add("tie");
-                Console.WriteLine("Tie game.");
+                _io.Output("Tie game.");
             }
             else
             {
@@ -44,12 +53,12 @@ namespace RockPaperScissors
                     if (computersMove == "S")
                     {
                         roundResults.Add("win");
-                        Console.WriteLine("You won.");
+                        _io.Output("You won.");
                     }
                     else
                     {
                         roundResults.Add("loss");
-                        Console.WriteLine("You lose.");
+                        _io.Output("You lose.");
                     }
                 }
                 else if (input == "P")
@@ -58,26 +67,26 @@ namespace RockPaperScissors
                     if (computersMove == "R")
                     {
                         roundResults.Add("win");
-                        Console.WriteLine("You won.");
+                        _io.Output("You won.");
                     }
                     else
                     {
                         roundResults.Add("loss");
-                        Console.WriteLine("You lose.");
+                        _io.Output("You lose.");
                     }
                 }
-                else
+                else if (input == "S")
                 {
                     // if the player said scissors
                     if (computersMove == "P")
                     {
                         roundResults.Add("win");
-                        Console.WriteLine("You won.");
+                        _io.Output("You won.");
                     }
                     else
                     {
                         roundResults.Add("loss");
-                        Console.WriteLine("You lose.");
+                        _io.Output("You lose.");
                     }
                 }
             }
@@ -85,21 +94,30 @@ namespace RockPaperScissors
 
         public void PrintSummary()
         {
+            string output = "";
             // print out the round results list
             foreach (string result in roundResults)
             {
-                Console.Write(result + " ");
+                output += result + " ";
             }
-            Console.WriteLine(); // line break
+            output += "\n"; // line break
         }
 
-        string DecideMove()
-        {
-            if (!roundResults.Contains("loss"))
-            {
-                return "P";
-            }
-            return "S";
-        }
+        /*exercise:
+         make a IRPSStrategy interface in this project
+         which can decide a move
+         (if wanted, use round results parameter)
+         
+         modify this class to use some implementation of this interface
+         just like how it now uses some implementation of IInputterOutputter for I/O
+         
+         write two classes that each implement that strategy interface
+         for two strategies
+         
+         in the program class, instantiate one of your strategies and pass it to the game
+         
+         extra:  ask the user which strategy he wants to play against and create the corresponding object*/
+
     }
 }
+

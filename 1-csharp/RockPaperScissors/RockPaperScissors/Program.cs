@@ -1,4 +1,7 @@
-﻿using System;
+﻿using RockPaperScissors;
+using RPS.Library;
+using System;
+
 
 namespace RockPaperScissors
 {
@@ -6,7 +9,13 @@ namespace RockPaperScissors
     {
         static void Main(string[] args)
         {
-            var game = new RockPaperScissorsGame();
+            InputterOutputter inputOutputSpecific = new InputterOutputter();
+            IInputterOutputter inputOutputGeneral = inputOutputSpecific;
+
+            RPSStrategy compStratGeneral = new RPSStrategy();
+            IRPSStrategy compStratSpecific = compStratGeneral;
+
+            var game = new RockPaperScissorsGame(inputOutputGeneral, compStratSpecific);
 
             bool readyToQuit = false;
 
