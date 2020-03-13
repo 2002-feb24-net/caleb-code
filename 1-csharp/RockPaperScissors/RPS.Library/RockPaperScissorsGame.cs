@@ -24,15 +24,24 @@ namespace RPS.Library
         List<string> roundResults = new List<string>();
 
         // methods
-        public void PlayRound()
+        public void PlayRound(int stratPref)
         {
             int roundNumber = roundResults.Count + 1;
 
             _io.Output("Round " + roundNumber + ". Enter R, P, or S: ");
             string input = _io.Input();
 
-            //setting the counterstrategy as the computer's next move **********System.ArgumentOutOfRangeException (index out of range)
-            string computersMove = _cs.CounterStrategy(roundResults, input);
+            string computersMove;
+            //setting the counterstrategy as the computer's next move
+            if(stratPref == 1)
+            {
+                computersMove = _cs.CounterStrategy(roundResults, input);
+            }
+            else
+            {
+                computersMove = _cs.CopyStrategy(input);
+            }
+            //string computersMove = _cs.CounterStrategy(roundResults, input);
 
             _io.Output("Computer chose " + computersMove);
 

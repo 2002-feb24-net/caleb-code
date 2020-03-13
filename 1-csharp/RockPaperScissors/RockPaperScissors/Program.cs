@@ -16,6 +16,8 @@ namespace RockPaperScissors
             IRPSStrategy compStratSpecific = compStratGeneral;
 
             var game = new RockPaperScissorsGame(inputOutputGeneral, compStratSpecific);
+            Console.WriteLine("What strategy do you wish to play against? (Enter 1 for Copy Strat, Enter 2 for Counter Strat)");
+            int stratInput = Convert.ToInt32(Console.ReadLine());
 
             bool readyToQuit = false;
 
@@ -30,7 +32,7 @@ namespace RockPaperScissors
                 }
                 else
                 {
-                    game.PlayRound();
+                    game.PlayRound(stratInput);
                     // that method should play a round and print the result.
                 }
             }
