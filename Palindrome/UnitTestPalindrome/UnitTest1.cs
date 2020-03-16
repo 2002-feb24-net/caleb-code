@@ -8,6 +8,7 @@ namespace UnitTestPalindrome
     [TestClass]
     public class UnitTest1
     {
+        // pull interface from palindrome namespace
         Interface1 _io;
         [TestMethod]
         public void TestMethod1()
@@ -26,9 +27,11 @@ namespace UnitTestPalindrome
         - "123abccba123"*/
         public void UnitTestPalindrome(Interface1 io)
         {
+            //take properties to test from IsPalindrome via interface
             _io = io;
             bool testBool = _io.IsPalindrome("racecar");
             Console.WriteLine(Convert.ToString(testBool));
+            Console.ReadKey();
         }
     }
 }
