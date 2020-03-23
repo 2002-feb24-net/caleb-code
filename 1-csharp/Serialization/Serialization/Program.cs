@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace Serialization
 {
@@ -41,7 +42,7 @@ namespace Serialization
             else
             {
                 // read JSON from the file
-                string json3 = ReadFromFile(filePath);
+                string json3 = ReadFromFileAsync(filePath);
                 // and deserialize it
                 data = JsonSerializer.Deserialize<List<Person>>(json3);
             }
@@ -61,7 +62,7 @@ namespace Serialization
             }
         }
 
-        private static string ReadFromFile(string filePath)
+        private static async Task<string> ReadFromFileAsync(string filePath)
         {
             // using block is the same as
             // try-finally-not null-dispose but way quicker to write and look at
@@ -72,8 +73,17 @@ namespace Serialization
             //}
 
             // newer syntax for the same thing, using statement
-            using var sr = new StreamReader(filePath);
+            /*using var sr = new StreamReader(filePath);
             string text = sr.ReadToEnd();
+            return text;*/
+
+            //async:
+            using var sr = new StreamReader(filePath);
+            Task<string> textTask = sr.ReadToEndAsync();
+            string text = await textTask;
+
+            List<Task> x = null;
+            await Task.WhenAny(x);
             return text;
             // (sr is disposed when this block ends, when this method returns)
         }

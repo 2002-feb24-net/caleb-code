@@ -66,7 +66,7 @@ namespace PersonList
 
     /*3. Create a Person class to represent a person, having (1) a name, and (2) at least one other piece
     of data. Do not use any public fields.*/
-    class Person
+    public static class Person
     {
         /*4. Implement 1 or more constructors, to enforce a requirement that a Person can't exist without a
         name.*/
@@ -74,7 +74,7 @@ namespace PersonList
         private int id;
         private static int statId;
         public static List<Person> persons = new List<Person>();
-        public void Persons(string name)
+        public static void Persons(string name) //make this a constructor instead of a method !!!
         {
             this.name = name;
 
