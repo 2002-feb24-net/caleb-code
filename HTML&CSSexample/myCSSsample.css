@@ -1,0 +1,62 @@
+/*give entire body a margin and background color*/
+body {
+  background-color: #C5FFFD;
+  background-repeat: repeat-x, no-repeat;
+}
+
+h1 {
+  text-align: center;
+  color: red;
+}
+
+/*dotted border for p elements*/
+p{
+  border-style: dotted;
+}
+
+/* input child of form is embiggened and given a background color */
+form > input {
+  background-color: lightblue;
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+/* input child of form is given a focus background color */
+input:focus {
+  background-color: lightgreen;
+}
+
+/* makes button look more interesting */
+button {
+  border-radius: 6px; /*round edges*/
+  background-color: #B0BC98;
+  font-size: 16px;
+  margin-left: 60px /* moves button off of edge of screen */
+}
+
+/* moves figure (image) and caption to the right */
+figure {
+  text-align: right;
+}
+
+/* centers div elements */
+div {
+  margin: auto;
+  width: 80%;
+}
+/* centers heading element within div */
+div > h3 {
+  text-align: center;
+}
+
+/* give footer a different background color */
+footer {
+  border-style: double;
+  background-color: #D9E5D6;
+}
+
+/* give form padding */
+form {
+  padding: 30px;
+}
